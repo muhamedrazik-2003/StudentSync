@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Badge } from '@/components/ui/badge';
 import {
   Table,
@@ -11,6 +11,27 @@ import {
 import TableActionMenu from './TableActionMenu';
 
 const TableData = ({ HeadData, rowData }) => {
+  const [clickedData, setClickedData] = useState({
+    id: '',
+    name: '',
+    email: '',
+    course: '',
+    dob: '',
+    enrolledDate: '',
+    address: '',
+    attendance: '',
+    gender: '',
+    phone: '',
+    profilePic: '',
+    semester: '',
+    status: '',
+    year: '',
+    updatedAt: ''
+  })
+
+  const handleClick = (data) => {
+    setClickedData(data)
+  }
 
   return (
     <Table>
@@ -23,7 +44,7 @@ const TableData = ({ HeadData, rowData }) => {
       </TableHeader>
       <TableBody>
         {rowData.map((data) => (
-          <TableRow>
+          <TableRow onClick={() => { handleClick(data) }}>
             <TableCell className="font-medium" key={data.id}>{data.id}</TableCell>
             <TableCell key={data.name}>{data.name}</TableCell>
             <TableCell key={data.email}>{data.email}</TableCell>
@@ -36,9 +57,9 @@ const TableData = ({ HeadData, rowData }) => {
               )}
             </TableCell>
             <TableCell className="text">
-              
-                <TableActionMenu studentId={data.id} />
-             
+
+              <TableActionMenu  studentData={clickedData}/>
+
             </TableCell>
           </TableRow>
         ))}
