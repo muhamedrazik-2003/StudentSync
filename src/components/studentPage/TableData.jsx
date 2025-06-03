@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { Badge } from '@/components/ui/badge';
 import {
   Table,
@@ -12,11 +12,11 @@ import TableActionMenu from './TableActionMenu';
 import StudentProfileDialog from './StudentProfileDialog';
 
 const TableData = ({ setPageReload, HeadData, rowData }) => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [isProfileDialogOpen, setIsProfileDialogOpen] = useState(false)
   const [rowStudentData,setRowStudentData] =useState({})
 
   const handleRowClick = (studentData) => {
-      setIsDialogOpen(true)
+      setIsProfileDialogOpen(true)
       setRowStudentData(studentData)
   }
   return (
@@ -31,11 +31,11 @@ const TableData = ({ setPageReload, HeadData, rowData }) => {
       </TableHeader>
       <TableBody>
         {rowData.map((data) => (
-          <TableRow onClick={()=> {handleRowClick(data)}}>
-            <TableCell className="font-medium" key={data.id}>{data.id}</TableCell>
-            <TableCell key={data.name}>{data.name}</TableCell>
-            <TableCell key={data.email}>{data.email}</TableCell>
-            <TableCell key={data.course}>{data.course}</TableCell>
+          <TableRow key={data.id}>
+            <TableCell onClick={()=> {handleRowClick(data)}} className="font-medium" key={data.id}>{data.id}</TableCell>
+            <TableCell onClick={()=> {handleRowClick(data)}} key={data.name}>{data.name}</TableCell>
+            <TableCell onClick={()=> {handleRowClick(data)}} key={data.email}>{data.email}</TableCell>
+            <TableCell onClick={()=> {handleRowClick(data)}} key={data.course}>{data.course}</TableCell>
             <TableCell key={data.status}>
               {data.status === 'Active' ? (
                 <Badge variant={"success"}>Active</Badge>
@@ -50,8 +50,7 @@ const TableData = ({ setPageReload, HeadData, rowData }) => {
         ))}
       </TableBody>
     </Table>
-
-    <StudentProfileDialog isDialogOpen={isDialogOpen} setIsDialogOpen={setIsDialogOpen} rowStudentData={rowStudentData} />
+    <StudentProfileDialog isProfileDialogOpen={isProfileDialogOpen} setIsProfileDialogOpen={setIsProfileDialogOpen} rowStudentData={rowStudentData} />
     </>
   )
 }

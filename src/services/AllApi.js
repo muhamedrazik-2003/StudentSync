@@ -7,4 +7,7 @@ export const getAllStudents = async() => {
 export const updateCurrentStudent = async(studentId,updatedData) => {
     return await axios.put(`${baseUrl}/students/${studentId}`,updatedData)
 };
+export const deleteStudent = async(studentId) => {
+    return await axios.delete(`${baseUrl}/students/${studentId}`)
+};
 
