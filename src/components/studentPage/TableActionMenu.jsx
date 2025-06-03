@@ -21,7 +21,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { updateCurrentStudent } from '@/services/AllApi';
+import { updateCurrentStudent, deleteStudent } from '@/services/AllApi';
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 
@@ -30,8 +30,22 @@ const TableActionMenu = ({ setPageReload, studentData }) => {
     const [updatedData, setUpdatedData] = useState({ ...studentData })
 
     const handleDataUpdate = async (studentId, updatedData) => {
-        const response = await updateCurrentStudent(studentId, updatedData)
-        setPageReload(prev => !prev)
+        try {
+            const response = await updateCurrentStudent(studentId, updatedData)
+            setPageReload(prev => !prev)
+        } catch (error) {
+            alert("Error updating User Data", error.message);
+            console.log("Error updating User Data", error.message);
+        }
+    }
+    const handleDataDelete = async (studentId) => {
+        try {
+            const Response = await deleteStudent(studentId)
+            setPageReload(prev => !prev)
+        } catch (error) {
+            alert("Error Deleting User Data", error.message);
+            console.log("Error Deleting User Data", error.message);
+        }
     }
 
     return (
@@ -51,7 +65,9 @@ const TableActionMenu = ({ setPageReload, studentData }) => {
                             <Pencil /> Edit User Details
                         </DropdownMenuItem>
                     </DialogTrigger>
-                    <DropdownMenuItem className={'pl-3 pr-6'}>
+                    <DropdownMenuItem className={'pl-3 pr-6'} onClick={() => {
+                        handleDataDelete(studentData.id)
+                    }}>
                         <Trash2 /> Delete User
                     </DropdownMenuItem>
                 </DropdownMenuContent>
