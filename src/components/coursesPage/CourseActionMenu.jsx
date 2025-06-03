@@ -71,7 +71,7 @@ const CourseActionMenu = ({ setPageReload, courseData }) => {
                 </DropdownMenuContent>
             </DropdownMenu>
             <form>
-                <DialogContent className="md:!max-w-3xl  mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
+                <DialogContent className=" mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
                     <DialogHeader className="flex items-center justify-between mb-5">
                         <DialogTitle className="text-2xl font-semibold text-primary"> Edit Course Details</DialogTitle>
                         <DialogDescription className={'text-slate-700'}>
@@ -79,8 +79,8 @@ const CourseActionMenu = ({ setPageReload, courseData }) => {
                             done.
                         </DialogDescription>
                     </DialogHeader>
-                    <ScrollArea className="px-1 h-[55vh]">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pr-3">
+                    <ScrollArea className="px-1 h-[45vh]">
+                        <div className="grid grid-cols-1 gap-5 pr-3">
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Name</Label>
                                 <Input id="" name="name" onChange={(e) => setUpdatedData({ ...updatedData, name: e.target.value })} defaultValue={courseData.name} />

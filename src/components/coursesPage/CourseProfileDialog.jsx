@@ -32,12 +32,12 @@ const CourseProfileDialog = ({ isProfileDialogOpen, setIsProfileDialogOpen, rowC
     }
     return (
         <Dialog open={isProfileDialogOpen} onOpenChange={setIsProfileDialogOpen}>
-            <DialogContent className="md:!max-w-3xl  mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
+            <DialogContent className=" mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
                 <DialogHeader className="flex items-center justify-between mb-5">
                     <DialogTitle className="text-2xl font-semibold text-primary">Course Details</DialogTitle>  
                 </DialogHeader>
-                <ScrollArea className="px-1 h-[55vh]">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pr-3">
+                <ScrollArea className="px-1 h-[60vh]">
+                    <div className="grid grid-cols-1 gap-4 pr-3">
                         {renderData("Course ID", rowCourseData?.id)}
                         {renderData("Name", rowCourseData?.name)}
                         {renderData("Duration", rowCourseData?.duration)}

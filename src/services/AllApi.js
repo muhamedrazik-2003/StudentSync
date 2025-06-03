@@ -4,6 +4,9 @@ import axios from "axios";
 export const getAllStudents = async() => {
     return await axios.get(`${baseUrl}/students`)
 };
+export const AddNewStudent = async(addedData) => {
+    return await axios.post(`${baseUrl}/students`,addedData)
+};
 export const updateCurrentStudent = async(studentId,updatedData) => {
     return await axios.put(`${baseUrl}/students/${studentId}`,updatedData)
 };
