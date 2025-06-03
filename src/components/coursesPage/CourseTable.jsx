@@ -9,15 +9,15 @@ import {
     TableRow,
 } from "@/components/ui/table"
 import CourseActionMenu from './CourseActionMenu';
-// import StudentProfileDialog from './StudentProfileDialog';
+import CourseProfileDialog from './CourseProfileDialog';
 
 const CourseTable = ({ setPageReload, HeadData, rowData }) => {
     const [isProfileDialogOpen, setIsProfileDialogOpen] = useState(false)
-    const [rowStudentData, setRowStudentData] = useState({})
+    const [rowCourseData, setRowCourseData] = useState({})
 
-    const handleRowClick = (studentData) => {
+    const handleRowClick = (courseData) => {
         setIsProfileDialogOpen(true)
-        setRowStudentData(studentData)
+        setRowCourseData(courseData)
     }
     return (
         <>
@@ -32,11 +32,11 @@ const CourseTable = ({ setPageReload, HeadData, rowData }) => {
                 <TableBody>
                     {rowData.map((data) => (
                         <TableRow key={data.id}>
-                            <TableCell className="font-medium" key={data.id}>{data.id}</TableCell>
-                            <TableCell key={data.name}>{data.name}</TableCell>
-                            <TableCell key={data.duration}>{data.duration}</TableCell>
-                            <TableCell key={data.instructor}>{data.instructor}</TableCell>
-                            <TableCell key={data.description}>{data.description}</TableCell>
+                            <TableCell onClick={()=> {handleRowClick(data)}} className="font-medium" key={data.id}>{data.id}</TableCell>
+                            <TableCell onClick={()=> {handleRowClick(data)}} key={data.name}>{data.name}</TableCell>
+                            <TableCell onClick={()=> {handleRowClick(data)}} key={data.duration}>{data.duration}</TableCell>
+                            <TableCell onClick={()=> {handleRowClick(data)}} key={data.instructor}>{data.instructor}</TableCell>
+                            <TableCell onClick={()=> {handleRowClick(data)}} key={data.description}>{data.description}</TableCell>
                             <TableCell className="text">
                                 <CourseActionMenu setPageReload={setPageReload} courseData={data} />
                             </TableCell>
@@ -44,7 +44,7 @@ const CourseTable = ({ setPageReload, HeadData, rowData }) => {
                     ))}
                 </TableBody>
             </Table>
-            {/* <StudentProfileDialog isProfileDialogOpen={isProfileDialogOpen} setIsProfileDialogOpen={setIsProfileDialogOpen} rowStudentData={rowStudentData} /> */}
+            <CourseProfileDialog isProfileDialogOpen={isProfileDialogOpen} setIsProfileDialogOpen={setIsProfileDialogOpen} rowCourseData={rowCourseData} />
         </>
     )
 }
