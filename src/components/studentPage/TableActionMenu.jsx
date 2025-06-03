@@ -22,44 +22,22 @@ import {
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { updateCurrentStudent } from '@/services/AllApi';
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 
 const TableActionMenu = ({ studentData }) => {
     const [isEditClicked, setIsEditClicked] = useState(false)
     const [isDialogOpen, setIsDialogOpen] = useState(false)
-    const [updatedData,setUpdatedData] = useState({...studentData})
-    //     {
-    //     id:'',
-    //     name:'',
-    //     email:'',
-    //     course:'',
-    //     dob:'',
-    //     enrolledDate:'',
-    //     address: {
-    //         street:'',
-    //         city:'',
-    //         state:'',
-    //         pincode:''
-    //     },
-    //     attendance:'',
-    //     gender:'',
-    //     phone:'',
-    //     profilePic:'',
-    //     semester:'',
-    //     status:'',
-    //     year:'',
-    //     updatedAt:''
-    // })
-    //  setUpdatedData({...studentData})
-    console.log(updatedData)
-
+    const [updatedData, setUpdatedData] = useState({ ...studentData })
+    const [pageReload, setPageReload] = useState('')
     useEffect(() => {
-        // handleDataUpdate()
-    }, [setUpdatedData])
 
-    const handleDataUpdate = async(studentId,updatedData) => {
-        const response = await  updateCurrentStudent(studentId,updatedData)
+    }, [pageReload])
+
+    const handleDataUpdate = async (studentId, updatedData) => {
+        const response = await updateCurrentStudent(studentId, updatedData)
         console.log(response.data)
+        setPageReload(response.data)
     }
 
     return (
@@ -89,92 +67,83 @@ const TableActionMenu = ({ studentData }) => {
                 </DropdownMenuContent>
             </DropdownMenu>
             <form>
-                <DialogContent className=" max-w-[85%] h-[80%] md:max-w-[75%]">
-                    <DialogHeader>
-
+                <DialogContent className="md:!max-w-3xl  mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
+                    <DialogHeader className="flex items-center justify-between mb-5">
                         {
                             isEditClicked
                                 ? (<>
-                                    <DialogTitle> Edit Student Details</DialogTitle>
-                                    <DialogDescription>
+                                    <DialogTitle className="text-2xl font-semibold text-primary"> Edit Student Details</DialogTitle>
+                                    <DialogDescription className={'text-slate-700'}>
                                         Make changes to your profile here. Click save when you&apos;re
                                         done.
                                     </DialogDescription>
                                 </>)
-                                : (<DialogTitle>Student Details</DialogTitle>)
+                                : (<DialogTitle className="text-2xl font-semibold text-primary">Student Details</DialogTitle>)
                         }
-
                     </DialogHeader>
-                    <div className="grid grid-cols-1 gap-4 md:grid-cols-2 overflow-y-auto px-6">
-                        <div className="space-y-3 mx-4 my-2 ">
-                            <Label htmlFor="">Name</Label>
-                            <Input id="" name="name" onChange={(e) => setUpdatedData({...updatedData,name:e.target.value})} defaultValue={studentData.name} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Email</Label>
-                            <Input id="" name="email" onChange={(e) => setUpdatedData({...updatedData,email:e.target.value})} defaultValue={studentData.email} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Date Of Birth</Label>
-                            <Input id="" name="dob" onChange={(e) => setUpdatedData({...updatedData,dob:e.target.value})} defaultValue={studentData.dob} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Gender</Label>
-                            <Input id="" name="gender" onChange={(e) => setUpdatedData({...updatedData,gender:e.target.value})} defaultValue={studentData.gender} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Phone</Label>
-                            <Input id="" name="phone" onChange={(e) => setUpdatedData({...updatedData,phone:e.target.value})} defaultValue={studentData.phone} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Street</Label>
-                            <Input id="" name="street" onChange={(e) => setUpdatedData({...updatedData,address: {...updatedData.address,street:e.target.value}})} defaultValue={studentData.address.street} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">City</Label>
-                            <Input id="" name="city" onChange={(e) => setUpdatedData({...updatedData,address: {...updatedData.address,city:e.target.value}})} defaultValue={studentData.address.city} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">State</Label>
-                            <Input id="" name="state" onChange={(e) => setUpdatedData({...updatedData,address: {...updatedData.address,state:e.target.value}})} defaultValue={studentData.address.state} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">pincode</Label>
-                            <Input id="" name="pincode" onChange={(e) => setUpdatedData({...updatedData,address: {...updatedData.address,pincode:e.target.value}})} defaultValue={studentData.address.pincode} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Course</Label>
-                            <Input id="" name="course" onChange={(e) => setUpdatedData({...updatedData,course:e.target.value})} defaultValue={studentData.course} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Year of Study</Label>
-                            <Input id="" name="year" onChange={(e) => setUpdatedData({...updatedData,year:e.target.value})} defaultValue={studentData.year} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Semester No.</Label>
-                            <Input id="" name="semester" onChange={(e) => setUpdatedData({...updatedData,semester:e.target.value})} defaultValue={studentData.semester} />
-                        </div>
-                        <div className="space-y-3 mx-4 my-2">
-                            <Label htmlFor="">Status</Label>
-                            <Input id="" name="status" onChange={(e) => setUpdatedData({...updatedData,status:e.target.value})} defaultValue={studentData.status} />
-                        </div>
-
-                        {/* <div className="md:col-span-2">
-                            <h2 className='ml-4 py-2 mb-2'>Address</h2>
-                            <div className='grid grid-cols-1 gap-4 md:grid-cols-2'>
-
+                    <ScrollArea className="px-1 h-[55vh]">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pr-3">
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Name</Label>
+                                <Input id="" name="name" onChange={(e) => setUpdatedData({ ...updatedData, name: e.target.value })} defaultValue={studentData.name} />
                             </div>
-
-                        </div> */}
-
-                    </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Email</Label>
+                                <Input id="" name="email" onChange={(e) => setUpdatedData({ ...updatedData, email: e.target.value })} defaultValue={studentData.email} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Date Of Birth</Label>
+                                <Input id="" name="dob" onChange={(e) => setUpdatedData({ ...updatedData, dob: e.target.value })} defaultValue={studentData.dob} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Gender</Label>
+                                <Input id="" name="gender" onChange={(e) => setUpdatedData({ ...updatedData, gender: e.target.value })} defaultValue={studentData.gender} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Phone</Label>
+                                <Input id="" name="phone" onChange={(e) => setUpdatedData({ ...updatedData, phone: e.target.value })} defaultValue={studentData.phone} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Street</Label>
+                                <Input id="" name="street" onChange={(e) => setUpdatedData({ ...updatedData, address: { ...updatedData.address, street: e.target.value } })} defaultValue={studentData.address.street} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">City</Label>
+                                <Input id="" name="city" onChange={(e) => setUpdatedData({ ...updatedData, address: { ...updatedData.address, city: e.target.value } })} defaultValue={studentData.address.city} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">State</Label>
+                                <Input id="" name="state" onChange={(e) => setUpdatedData({ ...updatedData, address: { ...updatedData.address, state: e.target.value } })} defaultValue={studentData.address.state} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">pincode</Label>
+                                <Input id="" name="pincode" onChange={(e) => setUpdatedData({ ...updatedData, address: { ...updatedData.address, pincode: e.target.value } })} defaultValue={studentData.address.pincode} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Course</Label>
+                                <Input id="" name="course" onChange={(e) => setUpdatedData({ ...updatedData, course: e.target.value })} defaultValue={studentData.course} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Year of Study</Label>
+                                <Input id="" name="year" onChange={(e) => setUpdatedData({ ...updatedData, year: e.target.value })} defaultValue={studentData.year} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Semester No.</Label>
+                                <Input id="" name="semester" onChange={(e) => setUpdatedData({ ...updatedData, semester: e.target.value })} defaultValue={studentData.semester} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Status</Label>
+                                <Input id="" name="status" onChange={(e) => setUpdatedData({ ...updatedData, status: e.target.value })} defaultValue={studentData.status} />
+                            </div>
+                        </div>
+                    </ScrollArea>
                     {
                         isEditClicked &&
-                        <DialogFooter className={'none'}>
+                        <DialogFooter className="flex justify-end gap-4 mt-5">
                             <DialogClose asChild>
-                                <Button variant="outline">Cancel</Button>
+                                <Button variant="outline" className={'rounded-full px-4'}>Cancel</Button>
                             </DialogClose>
-                            <Button type="submit" onClick={()=> {handleDataUpdate(studentData.id,updatedData)}}>Save changes</Button>
+                            <Button type="submit" className={'rounded-full px-4 text-white'} onClick={() => { handleDataUpdate(studentData.id, updatedData) }}>Save changes</Button>
                         </DialogFooter>
                     }
                 </DialogContent>
