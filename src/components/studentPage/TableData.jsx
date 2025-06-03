@@ -11,28 +11,6 @@ import {
 import TableActionMenu from './TableActionMenu';
 
 const TableData = ({ HeadData, rowData }) => {
-  const [clickedData, setClickedData] = useState({
-    id: '',
-    name: '',
-    email: '',
-    course: '',
-    dob: '',
-    enrolledDate: '',
-    address: '',
-    attendance: '',
-    gender: '',
-    phone: '',
-    profilePic: '',
-    semester: '',
-    status: '',
-    year: '',
-    updatedAt: ''
-  })
-
-  const handleClick = (data) => {
-    setClickedData(data)
-  }
-
   return (
     <Table>
       <TableHeader>
@@ -44,7 +22,7 @@ const TableData = ({ HeadData, rowData }) => {
       </TableHeader>
       <TableBody>
         {rowData.map((data) => (
-          <TableRow onClick={() => { handleClick(data) }}>
+          <TableRow>
             <TableCell className="font-medium" key={data.id}>{data.id}</TableCell>
             <TableCell key={data.name}>{data.name}</TableCell>
             <TableCell key={data.email}>{data.email}</TableCell>
@@ -57,9 +35,7 @@ const TableData = ({ HeadData, rowData }) => {
               )}
             </TableCell>
             <TableCell className="text">
-
-              <TableActionMenu  studentData={clickedData}/>
-
+              <TableActionMenu  studentData={data}/>
             </TableCell>
           </TableRow>
         ))}
