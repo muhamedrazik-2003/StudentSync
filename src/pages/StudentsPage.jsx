@@ -1,7 +1,7 @@
 import React, { useState, useEffect, use } from 'react'
 import UserGreeting from '@/components/Dashboard/UserGreeting';
 import { getAllStudents } from '@/services/AllApi';
-import TableData from '@/components/studentPage/TableData';
+import StudentTable from '@/components/studentPage/StudentTable';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Users } from 'lucide-react';
 
@@ -34,7 +34,7 @@ const StudentListPage = () => {
       </h2>
       <ScrollArea className={'h-[77%]'}>
         <div className=' px-6'>
-          <TableData setPageReload={setPageReload} HeadData={headerData} rowData={userData} />
+          <StudentTable setPageReload={setPageReload} HeadData={headerData} rowData={userData} />
         </div>
       </ScrollArea>
       

@@ -25,7 +25,7 @@ import { updateCurrentStudent, deleteStudent } from '@/services/AllApi';
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 
-const TableActionMenu = ({ setPageReload, studentData }) => {
+const StudentActionMenu = ({ setPageReload, studentData }) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false)
     const [updatedData, setUpdatedData] = useState({ ...studentData })
 
@@ -151,4 +151,4 @@ const TableActionMenu = ({ setPageReload, studentData }) => {
     )
 }
 
-export default TableActionMenu
+export default StudentActionMenu

@@ -11,3 +11,13 @@ export const deleteStudent = async(studentId) => {
     return await axios.delete(`${baseUrl}/students/${studentId}`)
 };
 
+export const getAllCourses = async() => {
+    return await axios.get(`${baseUrl}/courses`)
+};
+export const updateCurrentCourse = async(courseId,updatedData) => {
+    return await axios.put(`${baseUrl}/courses/${courseId}`,updatedData)
+};
+export const deleteCourse = async(courseId) => {
+    return await axios.delete(`${baseUrl}/courses/${courseId}`)
+};
+

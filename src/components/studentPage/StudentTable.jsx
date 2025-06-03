@@ -8,10 +8,10 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table"
-import TableActionMenu from './TableActionMenu';
+import StudentActionMenu from './StudentActionMenu';
 import StudentProfileDialog from './StudentProfileDialog';
 
-const TableData = ({ setPageReload, HeadData, rowData }) => {
+const StudentTable = ({ setPageReload, HeadData, rowData }) => {
   const [isProfileDialogOpen, setIsProfileDialogOpen] = useState(false)
   const [rowStudentData,setRowStudentData] =useState({})
 
@@ -31,12 +31,12 @@ const TableData = ({ setPageReload, HeadData, rowData }) => {
       </TableHeader>
       <TableBody>
         {rowData.map((data) => (
-          <TableRow key={data.id}>
+          <TableRow >
             <TableCell onClick={()=> {handleRowClick(data)}} className="font-medium" key={data.id}>{data.id}</TableCell>
             <TableCell onClick={()=> {handleRowClick(data)}} key={data.name}>{data.name}</TableCell>
             <TableCell onClick={()=> {handleRowClick(data)}} key={data.email}>{data.email}</TableCell>
             <TableCell onClick={()=> {handleRowClick(data)}} key={data.course}>{data.course}</TableCell>
-            <TableCell key={data.status}>
+            <TableCell onClick={()=> {handleRowClick(data)}} key={data.status}>
               {data.status === 'Active' ? (
                 <Badge variant={"success"}>Active</Badge>
               ) : (
@@ -44,7 +44,7 @@ const TableData = ({ setPageReload, HeadData, rowData }) => {
               )}
             </TableCell>
             <TableCell className="text">
-              <TableActionMenu setPageReload={setPageReload} studentData={data} />
+              <StudentActionMenu setPageReload={setPageReload} studentData={data} />
             </TableCell>
           </TableRow>
         ))}
@@ -55,4 +55,4 @@ const TableData = ({ setPageReload, HeadData, rowData }) => {
   )
 }
 
-export default TableData
+export default StudentTable
