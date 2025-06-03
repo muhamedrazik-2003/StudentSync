@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Badge } from '@/components/ui/badge';
 import {
   Table,
@@ -9,9 +9,18 @@ import {
   TableRow,
 } from "@/components/ui/table"
 import TableActionMenu from './TableActionMenu';
+import StudentProfileDialog from './StudentProfileDialog';
 
-const TableData = ({ HeadData, rowData }) => {
+const TableData = ({ setPageReload, HeadData, rowData }) => {
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const [rowStudentData,setRowStudentData] =useState({})
+
+  const handleRowClick = (studentData) => {
+      setIsDialogOpen(true)
+      setRowStudentData(studentData)
+  }
   return (
+    <>
     <Table>
       <TableHeader>
         <TableRow>
@@ -22,7 +31,7 @@ const TableData = ({ HeadData, rowData }) => {
       </TableHeader>
       <TableBody>
         {rowData.map((data) => (
-          <TableRow>
+          <TableRow onClick={()=> {handleRowClick(data)}}>
             <TableCell className="font-medium" key={data.id}>{data.id}</TableCell>
             <TableCell key={data.name}>{data.name}</TableCell>
             <TableCell key={data.email}>{data.email}</TableCell>
@@ -35,12 +44,15 @@ const TableData = ({ HeadData, rowData }) => {
               )}
             </TableCell>
             <TableCell className="text">
-              <TableActionMenu  studentData={data}/>
+              <TableActionMenu setPageReload={setPageReload} studentData={data} />
             </TableCell>
           </TableRow>
         ))}
       </TableBody>
     </Table>
+
+    <StudentProfileDialog isDialogOpen={isDialogOpen} setIsDialogOpen={setIsDialogOpen} rowStudentData={rowStudentData} />
+    </>
   )
 }
 

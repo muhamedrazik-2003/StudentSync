@@ -25,27 +25,18 @@ import { updateCurrentStudent } from '@/services/AllApi';
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 
-const TableActionMenu = ({ studentData }) => {
-    const [isEditClicked, setIsEditClicked] = useState(false)
+const TableActionMenu = ({ setPageReload, studentData }) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false)
     const [updatedData, setUpdatedData] = useState({ ...studentData })
-    const [pageReload, setPageReload] = useState('')
-    useEffect(() => {
-
-    }, [pageReload])
 
     const handleDataUpdate = async (studentId, updatedData) => {
         const response = await updateCurrentStudent(studentId, updatedData)
-        console.log(response.data)
-        setPageReload(response.data)
+        setPageReload(prev => !prev)
     }
 
     return (
         <Dialog open={isDialogOpen} onOpenChange={(open) => {
             setIsDialogOpen(open)
-            if (!open) {
-                setIsEditClicked(false)
-            }
         }}>
             <DropdownMenu>
                 <DropdownMenuTrigger>
@@ -55,7 +46,6 @@ const TableActionMenu = ({ studentData }) => {
                     <DropdownMenuLabel>Actions</DropdownMenuLabel>
                     <DialogTrigger asChild>
                         <DropdownMenuItem className={'pl-3 pr-6'} onClick={() => {
-                            setIsEditClicked(true)
                             setIsDialogOpen(true)
                         }} >
                             <Pencil /> Edit User Details
@@ -69,17 +59,11 @@ const TableActionMenu = ({ studentData }) => {
             <form>
                 <DialogContent className="md:!max-w-3xl  mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
                     <DialogHeader className="flex items-center justify-between mb-5">
-                        {
-                            isEditClicked
-                                ? (<>
-                                    <DialogTitle className="text-2xl font-semibold text-primary"> Edit Student Details</DialogTitle>
-                                    <DialogDescription className={'text-slate-700'}>
-                                        Make changes to your profile here. Click save when you&apos;re
-                                        done.
-                                    </DialogDescription>
-                                </>)
-                                : (<DialogTitle className="text-2xl font-semibold text-primary">Student Details</DialogTitle>)
-                        }
+                        <DialogTitle className="text-2xl font-semibold text-primary"> Edit Student Details</DialogTitle>
+                        <DialogDescription className={'text-slate-700'}>
+                            Make changes to your profile here. Click save when you&apos;re
+                            done.
+                        </DialogDescription>
                     </DialogHeader>
                     <ScrollArea className="px-1 h-[55vh]">
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pr-3">
@@ -137,15 +121,14 @@ const TableActionMenu = ({ studentData }) => {
                             </div>
                         </div>
                     </ScrollArea>
-                    {
-                        isEditClicked &&
-                        <DialogFooter className="flex justify-end gap-4 mt-5">
-                            <DialogClose asChild>
-                                <Button variant="outline" className={'rounded-full px-4'}>Cancel</Button>
-                            </DialogClose>
+                    <DialogFooter className="flex justify-end gap-4 mt-5">
+                        <DialogClose asChild>
+                            <Button variant="outline" className={'rounded-full px-4'}>Cancel</Button>
+                        </DialogClose>
+                        <DialogClose asChild>
                             <Button type="submit" className={'rounded-full px-4 text-white'} onClick={() => { handleDataUpdate(studentData.id, updatedData) }}>Save changes</Button>
-                        </DialogFooter>
-                    }
+                        </DialogClose>
+                    </DialogFooter>
                 </DialogContent>
             </form>
         </Dialog>
