@@ -31,7 +31,11 @@ const StudentActionMenu = ({ setPageReload, studentData }) => {
 
     const handleDataUpdate = async (studentId, updatedData) => {
         try {
-            const response = await updateCurrentStudent(studentId, updatedData)
+            const dataToUpdate = {
+                ...updatedData,
+                updatedAt: new Date().toISOString()
+            }
+            const response = await updateCurrentStudent(studentId, dataToUpdate)
             setPageReload(prev => !prev)
         } catch (error) {
             alert("Error updating User Data", error.message);

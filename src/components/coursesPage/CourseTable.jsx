@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import { Badge } from '@/components/ui/badge';
 import {
     Table,
     TableBody,
@@ -36,7 +35,7 @@ const CourseTable = ({ setPageReload, HeadData, rowData }) => {
                             <TableCell onClick={()=> {handleRowClick(data)}} key={data.name}>{data.name}</TableCell>
                             <TableCell onClick={()=> {handleRowClick(data)}} key={data.duration}>{data.duration}</TableCell>
                             <TableCell onClick={()=> {handleRowClick(data)}} key={data.instructor}>{data.instructor}</TableCell>
-                            <TableCell onClick={()=> {handleRowClick(data)}} key={data.description}>{data.description}</TableCell>
+                            <TableCell onClick={()=> {handleRowClick(data)}} className={'whitespace-normal break-words max-w-[300px]'} key={data.description}>{data.description}</TableCell>
                             <TableCell className="text">
                                 <CourseActionMenu setPageReload={setPageReload} courseData={data} />
                             </TableCell>

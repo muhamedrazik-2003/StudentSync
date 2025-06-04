@@ -79,8 +79,12 @@ const CourseActionMenu = ({ setPageReload, courseData }) => {
                             done.
                         </DialogDescription>
                     </DialogHeader>
-                    <ScrollArea className="px-1 h-[48vh]">
+                    <ScrollArea className="px-1 h-[60vh]">
                         <div className="grid grid-cols-1 gap-5 pr-3">
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Course ID</Label>
+                                <Input id="" name="name" onChange={(e) => setUpdatedData({ ...updatedData, id: e.target.value })} defaultValue={courseData.id} />
+                            </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Name</Label>
                                 <Input id="" name="name" onChange={(e) => setUpdatedData({ ...updatedData, name: e.target.value })} defaultValue={courseData.name} />

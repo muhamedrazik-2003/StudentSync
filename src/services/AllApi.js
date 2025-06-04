@@ -27,3 +27,7 @@ export const deleteCourse = async(courseId) => {
     return await axios.delete(`${baseUrl}/courses/${courseId}`)
 };
 
+
+export const getAllGrades = async() => {
+    return await axios.get(`${baseUrl}/grades`)
+};

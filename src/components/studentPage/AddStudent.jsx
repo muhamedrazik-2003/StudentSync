@@ -16,18 +16,28 @@ import { Label } from "@/components/ui/label"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { AddNewStudent } from '@/services/AllApi'
 
-const AddStudent = ({setPageReload}) => {
+const AddStudent = ({ setPageReload }) => {
     const [newData, setNewData] = useState({})
-    const handleDataAdd = async (AddedData) => {
-            try {
-                const response = await AddNewStudent(AddedData)
-                setPageReload(prev => !prev)
-            } catch (error) {
-                alert("Error Adding Student Data", error.message);
-                console.log("Error Adding Student Data", error.message);
-            }
-        }
+    const handleDataAdd = async (addedData) => {
+        try {
+            const dataToAdd = {
+                ...addedData,
+                profilePic: "https://placeimg.com/1015/772/any",
+                attendance: {
+                    totalClasses: 108,
+                    attended: 108
+                },
+                enrolledDate: `${new Date().toLocaleDateString().split('/').reverse().join('-')}`,
+                updatedAt: new Date().toISOString()
+            };
 
+            const response = await AddNewStudent(dataToAdd);
+            setPageReload(prev => !prev);
+        } catch (error) {
+            alert(`Error Adding Student Data: ${error.message}`);
+            console.log("Error Adding Student Data", error.message);
+        }
+    };
     return (
         <Dialog >
             <DialogTrigger asChild >
@@ -46,7 +56,7 @@ const AddStudent = ({setPageReload}) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pr-3">
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Name</Label>
-                                <Input id="" name="name" onChange={(e) => setNewData({ ...newData, name: e.target.value })}  />
+                                <Input id="" name="name" onChange={(e) => setNewData({ ...newData, name: e.target.value })} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Email</Label>
@@ -54,7 +64,7 @@ const AddStudent = ({setPageReload}) => {
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Date Of Birth</Label>
-                                <Input id="" name="dob" onChange={(e) => setNewData({ ...newData, dob: e.target.value })}  />
+                                <Input id="" name="dob" onChange={(e) => setNewData({ ...newData, dob: e.target.value })} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Gender</Label>
@@ -62,23 +72,23 @@ const AddStudent = ({setPageReload}) => {
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Phone</Label>
-                                <Input id="" name="phone" onChange={(e) => setNewData({ ...newData, phone: e.target.value })}  />
+                                <Input id="" name="phone" onChange={(e) => setNewData({ ...newData, phone: e.target.value })} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Street</Label>
-                                <Input id="" name="street" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, street: e.target.value } })}/>
+                                <Input id="" name="street" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, street: e.target.value } })} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">City</Label>
-                                <Input id="" name="city" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, city: e.target.value } })}/>
+                                <Input id="" name="city" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, city: e.target.value } })} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">State</Label>
-                                <Input id="" name="state" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, state: e.target.value } })}/>
+                                <Input id="" name="state" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, state: e.target.value } })} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">pincode</Label>
-                                <Input id="" name="pincode" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, pincode: e.target.value } })}/>
+                                <Input id="" name="pincode" onChange={(e) => setNewData({ ...newData, address: { ...newData.address, pincode: e.target.value } })} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Course</Label>
@@ -94,7 +104,7 @@ const AddStudent = ({setPageReload}) => {
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Status</Label>
-                                <Input id="" name="status" onChange={(e) => setNewData({ ...newData, status: e.target.value })}  />
+                                <Input id="" name="status" onChange={(e) => setNewData({ ...newData, status: e.target.value })} />
                             </div>
                         </div>
                     </ScrollArea>

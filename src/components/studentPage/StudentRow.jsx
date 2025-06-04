@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const StudentRow = ({data}) => {
+const StudentRow = ({setPageReload,data}) => {
      const [rowStudentData,setRowStudentData] =useState({})
     
       const handleRowClick = (studentData) => {

@@ -31,7 +31,7 @@ const StudentTable = ({ setPageReload, HeadData, rowData }) => {
       </TableHeader>
       <TableBody>
         {rowData.map((data) => (
-          <TableRow >
+          <TableRow key={data.id}>
             <TableCell onClick={()=> {handleRowClick(data)}} className="font-medium" key={data.id}>{data.id}</TableCell>
             <TableCell onClick={()=> {handleRowClick(data)}} key={data.name}>{data.name}</TableCell>
             <TableCell onClick={()=> {handleRowClick(data)}} key={data.email}>{data.email}</TableCell>

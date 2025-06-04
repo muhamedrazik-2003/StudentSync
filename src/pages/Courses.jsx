@@ -1,9 +1,9 @@
-import React, { useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import UserGreeting from '@/components/Dashboard/UserGreeting';
 import { getAllCourses } from '@/services/AllApi';
 import CourseTable from '@/components/coursesPage/CourseTable';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { BookCopy} from 'lucide-react';
+import { BookCopy } from 'lucide-react';
 import AddCourse from '@/components/coursesPage/AddCourse';
 
 const Courses = () => {
@@ -33,7 +33,7 @@ const Courses = () => {
           <BookCopy className="w-5 h-5 text-primary" />
           All Courses
         </h2>
-        <AddCourse setPageReload={setPageReload}/>
+        <AddCourse setPageReload={setPageReload} />
       </div>
       <ScrollArea className={'h-[75%]'}>
         <div className=' px-6'>
