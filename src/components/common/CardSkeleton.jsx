@@ -1,6 +1,6 @@
 import { Skeleton } from "@/components/ui/skeleton";
 
-const StudentCardSkeleton = () => {
+const CardSkeleton = () => {
   return (
     <div className="rounded-xl border bg-white p-4 shadow-md w-full max-w-sm space-y-3">
       <div className="flex justify-between items-start">
@@ -21,4 +21,4 @@ const StudentCardSkeleton = () => {
   );
 };
 
-export default StudentCardSkeleton;
+export default CardSkeleton;

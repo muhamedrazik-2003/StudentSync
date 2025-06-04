@@ -9,7 +9,7 @@ import {
 export function SectionCards() {
     return (
         <div className=" grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-4 px-2  lg:px-6">
-            <Card className="@container/card">
+            <Card className="@container/card rounded-2xl">
                 <CardHeader >
                     <div className="flex items-center gap-2">
                         <Users className="size-8" />

@@ -4,7 +4,7 @@ import { GradeCards } from '@/components/gradePage/GradeCards';
 import { getAllGrades } from '@/services/AllApi';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { School } from 'lucide-react';
-import StudentCardSkeleton from '@/components/common/StudentCardSkeleton';
+import CardSkeleton from '@/components/common/CardSkeleton';
 
 const Grades = () => {
   const [gradeData, setGradeData] = useState([]);
@@ -19,7 +19,7 @@ const Grades = () => {
       const response = await getAllGrades();
       setGradeData(response.data);
       console.log(response.data)
-      // setIsLoading(false)
+      setIsLoading(false)
     } catch (error) {
       console.log("Error Fetching Grades Data", error.message);
     }
@@ -40,7 +40,7 @@ const Grades = () => {
           {
             gradeData.map(cardData => (
               isLoading
-                ? <StudentCardSkeleton />
+                ? <CardSkeleton />
                 : <GradeCards setPageReload={setPageReload} cardData={cardData} />
             ))
           }
