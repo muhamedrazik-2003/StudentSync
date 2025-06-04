@@ -64,6 +64,26 @@ const AddCourse = ({ setPageReload }) => {
                                 <Label htmlFor="">Description</Label>
                                 <Input id="" name="description" onChange={(e) => setNewData({ ...newData, description: e.target.value })} />
                             </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Subject 1</Label>
+                                <Input id="" name="subject1" onChange={(e) => setNewData({ ...newData, subjects: { ...newData.subjects, sub1: e.target.value } })} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Subject 2</Label>
+                                <Input id="" name="subject2" onChange={(e) => setNewData({ ...newData, subjects: { ...newData.subjects, sub2: e.target.value } })} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Subject 3</Label>
+                                <Input id="" name="subject3" onChange={(e) => setNewData({ ...newData, subjects: { ...newData.subjects, sub3: e.target.value } })} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Subject 4</Label>
+                                <Input id="" name="subject4" onChange={(e) => setNewData({ ...newData, subjects: { ...newData.subjects, sub4: e.target.value } })} />
+                            </div>
+                            <div className="mx-1 space-y-2">
+                                <Label htmlFor="">Subject 4</Label>
+                                <Input id="" name="subject5" onChange={(e) => setNewData({ ...newData, subjects: { ...newData.subjects, sub5: e.target.value } })} />
+                            </div>
                         </div>
                     </ScrollArea>
                     <DialogFooter className="flex justify-end gap-4 mt-5">

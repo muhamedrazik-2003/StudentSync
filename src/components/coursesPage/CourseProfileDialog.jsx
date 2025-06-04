@@ -21,7 +21,7 @@ const CourseProfileDialog = ({ isProfileDialogOpen, setIsProfileDialogOpen, rowC
         return (
             <div className="space-y-1">
                 <p className="mx-1 text-sm text-teal-600 font-medium">{label}</p>
-                <div className="bg-white  border border-slate-300 rounded-full px-3 py-1.5 text-title shadow-sm ">
+                <div className="bg-white border border-slate-300 rounded-3xl px-3 py-1.5 text-title shadow-sm ">
                     {isLoading
                         ? <Skeleton className="w-full h-5 rounded-md" />
                         : courseData || 'Not Available'
@@ -32,17 +32,22 @@ const CourseProfileDialog = ({ isProfileDialogOpen, setIsProfileDialogOpen, rowC
     }
     return (
         <Dialog open={isProfileDialogOpen} onOpenChange={setIsProfileDialogOpen}>
-            <DialogContent className=" mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
+            <DialogContent className="  mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
                 <DialogHeader className="flex items-center justify-between mb-5">
                     <DialogTitle className="text-2xl font-semibold text-primary">Course Details</DialogTitle>  
                 </DialogHeader>
-                <ScrollArea className="px-1 h-[60vh]">
-                    <div className="grid grid-cols-1 gap-4 pr-3">
+                <ScrollArea className="px-1 h-[65vh]">
+                    <div className="grid grid-cols-1 gap-5 pr-3">
                         {renderData("Course ID", rowCourseData?.id)}
                         {renderData("Name", rowCourseData?.name)}
                         {renderData("Duration", rowCourseData?.duration)}
                         {renderData("Instructor", rowCourseData?.instructor)}
                         {renderData("Description", rowCourseData?.description)}
+                        {renderData("Subject 1", rowCourseData?.subjects?.sub1)}
+                        {renderData("Subject 2", rowCourseData?.subjects?.sub2)}
+                        {renderData("Subject 3", rowCourseData?.subjects?.sub3)}
+                        {renderData("Subject 4", rowCourseData?.subjects?.sub4)}
+                        {renderData("Subject 5", rowCourseData?.subjects?.sub5)}
                     </div>
                 </ScrollArea>
                 <DialogFooter className="flex justify-end gap-4 mt-2">

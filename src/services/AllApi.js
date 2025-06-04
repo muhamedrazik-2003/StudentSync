@@ -31,3 +31,6 @@ export const deleteCourse = async(courseId) => {
 export const getAllGrades = async() => {
     return await axios.get(`${baseUrl}/grades`)
 };
+export const updateCurrentGrade = async(studentId,updatedData) => {
+    return await axios.put(`${baseUrl}/grades/${studentId}`,updatedData)
+};

@@ -39,7 +39,11 @@ const Grades = () => {
           <CourseTable setPageReload={setPageReload} HeadData={headerData} rowData={gradeData} />
         </div> */}
         <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-3 gap-3 px-6">
-          <GradeCards setPageReload={setPageReload} rowData={gradeData}/>
+          {
+            gradeData.map(cardData => (
+              <GradeCards setPageReload={setPageReload} cardData={cardData} />
+            ))
+          }
         </div>
       </ScrollArea>
     </main>
