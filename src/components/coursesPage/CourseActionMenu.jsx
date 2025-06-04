@@ -21,33 +21,33 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { updateCurrentCourse,deleteCourse } from '@/services/AllApi';
+import { updateCurrentCourse, deleteCourse } from '@/services/AllApi';
 import { ScrollArea } from "@/components/ui/scroll-area"
 
 const CourseActionMenu = ({ setPageReload, courseData }) => {
     const [isDialogOpen, setIsDialogOpen] = useState(false)
-        const [updatedData, setUpdatedData] = useState({ ...courseData })
-    
-        const handleDataUpdate = async (courseId, updatedData) => {
-            try {
-                const response = await updateCurrentCourse(courseId, updatedData)
-                setPageReload(prev => !prev)
-            } catch (error) {
-                alert("Error updating Course Data", error.message);
-                console.log("Error updating Course Data", error.message);
-            }
+    const [updatedData, setUpdatedData] = useState({ ...courseData })
+
+    const handleDataUpdate = async (courseId, updatedData) => {
+        try {
+            const response = await updateCurrentCourse(courseId, updatedData)
+            setPageReload(prev => !prev)
+        } catch (error) {
+            alert("Error updating Course Data", error.message);
+            console.log("Error updating Course Data", error.message);
         }
-        const handleDataDelete = async (courseId) => {
-            try {
-                const Response = await deleteCourse(courseId)
-                setPageReload(prev => !prev)
-            } catch (error) {
-                alert("Error Deleting course Data", error.message);
-                console.log("Error Deleting course Data", error.message);
-            }
+    }
+    const handleDataDelete = async (courseId) => {
+        try {
+            const Response = await deleteCourse(courseId)
+            setPageReload(prev => !prev)
+        } catch (error) {
+            alert("Error Deleting course Data", error.message);
+            console.log("Error Deleting course Data", error.message);
         }
-  return (
-   <Dialog open={isDialogOpen} onOpenChange={(open) => {
+    }
+    return (
+        <Dialog open={isDialogOpen} onOpenChange={(open) => {
             setIsDialogOpen(open)
         }}>
             <DropdownMenu>
@@ -79,7 +79,7 @@ const CourseActionMenu = ({ setPageReload, courseData }) => {
                             done.
                         </DialogDescription>
                     </DialogHeader>
-                    <ScrollArea className="px-1 h-[45vh]">
+                    <ScrollArea className="px-1 h-[48vh]">
                         <div className="grid grid-cols-1 gap-5 pr-3">
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Name</Label>
@@ -110,7 +110,7 @@ const CourseActionMenu = ({ setPageReload, courseData }) => {
                 </DialogContent>
             </form>
         </Dialog>
-  )
+    )
 }
 
 export default CourseActionMenu

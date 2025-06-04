@@ -37,7 +37,7 @@ const StudentListPage = () => {
         </h2>
         <AddStudent setPageReload={setPageReload}/>
       </div>
-      <ScrollArea className={'h-[77%]'}>
+      <ScrollArea className={'h-[75%]'}>
         <div className=' px-6'>
           <StudentTable setPageReload={setPageReload} HeadData={headerData} rowData={userData} />
         </div>

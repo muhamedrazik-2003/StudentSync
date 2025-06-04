@@ -4,6 +4,7 @@ import { getAllCourses } from '@/services/AllApi';
 import CourseTable from '@/components/coursesPage/CourseTable';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { BookCopy} from 'lucide-react';
+import AddCourse from '@/components/coursesPage/AddCourse';
 
 const Courses = () => {
   const [CourseData, setCourseData] = useState([]);
@@ -27,11 +28,14 @@ const Courses = () => {
       <section className='px-6 mt-8'>
         <UserGreeting />
       </section>
-      <h2 className="text-xl px-6 pb-1 font-semibold text-slate-900 mt-6 flex items-center gap-2 ">
-        <BookCopy className="w-5 h-5 text-primary" />
-        All Courses
-      </h2>
-      <ScrollArea className={'h-[77%]'}>
+      <div className='flex justify-end items-center mt-6 px-7 pb-1'>
+        <h2 className="text-xl mr-auto font-semibold text-slate-900  flex items-center gap-2 ">
+          <BookCopy className="w-5 h-5 text-primary" />
+          All Courses
+        </h2>
+        <AddCourse setPageReload={setPageReload}/>
+      </div>
+      <ScrollArea className={'h-[75%]'}>
         <div className=' px-6'>
           <CourseTable setPageReload={setPageReload} HeadData={headerData} rowData={CourseData} />
         </div>

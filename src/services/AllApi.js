@@ -17,6 +17,9 @@ export const deleteStudent = async(studentId) => {
 export const getAllCourses = async() => {
     return await axios.get(`${baseUrl}/courses`)
 };
+export const AddNewCourse = async(addedData) => {
+    return await axios.post(`${baseUrl}/courses`,addedData)
+};
 export const updateCurrentCourse = async(courseId,updatedData) => {
     return await axios.put(`${baseUrl}/courses/${courseId}`,updatedData)
 };
