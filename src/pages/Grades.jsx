@@ -38,7 +38,7 @@ const Grades = () => {
         {/* <div className=' px-6'>
           <CourseTable setPageReload={setPageReload} HeadData={headerData} rowData={gradeData} />
         </div> */}
-        <div className="grid grid-cols-1 md:grid-cols-4 xl:grid-cols-3 gap-3 px-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-3 px-6">
           {
             gradeData.map(cardData => (
               <GradeCards setPageReload={setPageReload} cardData={cardData} />
