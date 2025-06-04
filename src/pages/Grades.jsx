@@ -4,11 +4,12 @@ import { GradeCards } from '@/components/gradePage/GradeCards';
 import { getAllGrades } from '@/services/AllApi';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { School } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+import StudentCardSkeleton from '@/components/common/StudentCardSkeleton';
 
 const Grades = () => {
   const [gradeData, setGradeData] = useState([]);
   const [pageReload, setPageReload] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     fetchGradeData()
   }, [pageReload]);
@@ -18,6 +19,7 @@ const Grades = () => {
       const response = await getAllGrades();
       setGradeData(response.data);
       console.log(response.data)
+      // setIsLoading(false)
     } catch (error) {
       console.log("Error Fetching Grades Data", error.message);
     }
@@ -32,16 +34,14 @@ const Grades = () => {
           <School className="w-5 h-5 text-primary" />
           Student Grades
         </h2>
-        {/* <AddCourse setPageReload={setPageReload} /> */}
       </div>
       <ScrollArea className={'h-[75%]'}>
-        {/* <div className=' px-6'>
-          <CourseTable setPageReload={setPageReload} HeadData={headerData} rowData={gradeData} />
-        </div> */}
-        <div className="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-3 px-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-3 px-6">
           {
             gradeData.map(cardData => (
-              <GradeCards setPageReload={setPageReload} cardData={cardData} />
+              isLoading
+                ? <StudentCardSkeleton />
+                : <GradeCards setPageReload={setPageReload} cardData={cardData} />
             ))
           }
         </div>

@@ -24,7 +24,7 @@ const CourseTable = ({ setPageReload, HeadData, rowData }) => {
                 <TableHeader>
                     <TableRow>
                         {HeadData.map((header) => (
-                            <TableHead className={`first:w-[100px]`} key={header}>{header}</TableHead>
+                            <TableHead className={`first:w-[100px] font-semibold`} key={header}>{header}</TableHead>
                         ))}
                     </TableRow>
                 </TableHeader>

@@ -4,13 +4,14 @@ import { getAllStudents } from '@/services/AllApi';
 import StudentTable from '@/components/studentPage/StudentTable';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Users, } from 'lucide-react';
-// import { Button } from '@/components/ui/button';
 import AddStudent from '@/components/studentPage/AddStudent';
+import TableSkeleton from '@/components/common/TableSkelton';
 
 const StudentListPage = () => {
   const [userData, setUserData] = useState([]);
-  const headerData = ['Student ID', 'Name', 'Email', 'Course', 'Status'];
+  const headerData = ['Student ID', 'Name', 'Email', 'Course', 'Status',""];
   const [pageReload, setPageReload] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     fetchUserData()
   }, [pageReload]);
@@ -19,7 +20,7 @@ const StudentListPage = () => {
     try {
       const response = await getAllStudents();
       setUserData(response.data);
-      console.log(response.data)
+      setIsLoading(false)
     } catch (error) {
       console.log("Error Fetchimg User Data", error.message);
     }
@@ -35,12 +36,18 @@ const StudentListPage = () => {
           <Users className="w-5 h-5 text-primary" />
           All Students
         </h2>
-        <AddStudent setPageReload={setPageReload}/>
+        <AddStudent setPageReload={setPageReload} />
       </div>
       <ScrollArea className={'h-[75%]'}>
-        <div className=' px-6'>
-          <StudentTable setPageReload={setPageReload} HeadData={headerData} rowData={userData} />
-        </div>
+        {isLoading
+          ? (<div className=' px-6'>
+            <TableSkeleton  headerSkeltonData={headerData}/>
+          </div>)
+          : (
+            <div className=' px-6'>
+              <StudentTable setPageReload={setPageReload} HeadData={headerData} rowData={userData} />
+            </div>
+          )}
       </ScrollArea>
 
     </main>

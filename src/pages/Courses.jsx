@@ -5,11 +5,13 @@ import CourseTable from '@/components/coursesPage/CourseTable';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { BookCopy } from 'lucide-react';
 import AddCourse from '@/components/coursesPage/AddCourse';
+import TableSkeleton from '@/components/common/TableSkelton';
 
 const Courses = () => {
   const [CourseData, setCourseData] = useState([]);
   const headerData = ['Course ID', 'Name', 'Duration', 'Instructor', 'Description'];
   const [pageReload, setPageReload] = useState(false)
+  const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
     fetchCourseData()
   }, [pageReload]);
@@ -19,6 +21,7 @@ const Courses = () => {
       const response = await getAllCourses();
       setCourseData(response.data);
       console.log(response.data)
+      setIsLoading(false)
     } catch (error) {
       console.log("Error Fetchimg Courses Data", error.message);
     }
@@ -36,9 +39,16 @@ const Courses = () => {
         <AddCourse setPageReload={setPageReload} />
       </div>
       <ScrollArea className={'h-[75%]'}>
-        <div className=' px-6'>
-          <CourseTable setPageReload={setPageReload} HeadData={headerData} rowData={CourseData} />
-        </div>
+        {isLoading
+          ? (<div className=' px-6'>
+            <TableSkeleton headerSkeltonData={headerData} />
+          </div>)
+          : (
+            <div className=' px-6'>
+              <CourseTable setPageReload={setPageReload} HeadData={headerData} rowData={CourseData} />
+            </div>
+          )}
+
       </ScrollArea>
     </main>
   )
