@@ -1,7 +1,8 @@
 import React , {useState, useEffect} from 'react'
 import UserGreeting from '@/components/Dashboard/UserGreeting'
 import { SectionCards } from '@/components/Dashboard/SectionCards'
-import { GradeChart } from '@/components/ui/GradeChart'
+// import GradeChart from '@/components/ui/GradeChart'
+import StudentsPerCourseChart from '@/components/ui/StudentsPerCourseChart'
 import { getAllGrades } from '@/services/AllApi'
 
 const Dashboard = () => {
@@ -25,11 +26,12 @@ const Dashboard = () => {
       <section className='px-6 mt-8'>
         <UserGreeting />
       </section>
-      <section className='my-6'>
+      <section className='mt-6'>
         <SectionCards />
       </section>
-      <section className='my-6'>
-        <GradeChart students={gradeData}/>
+      <section className='mt-4 px-6 grid grid-cols-[500px] gap-2'>
+        {/* <GradeChart students={gradeData}/> */}
+        <StudentsPerCourseChart students={gradeData}/>
       </section>
     </main>
   )

@@ -12,8 +12,8 @@ const StudentCardSkeleton = () => {
       <div className="space-y-2 pt-3">
         {Array.from({ length: 5 }).map((_, i) => (
           <div key={i} className="flex justify-between items-center">
-            <Skeleton className="h-4 w-40 rounded-md" />
-            <Skeleton className="h-4 w-6 rounded-full" />
+            <Skeleton className="h-4 my-1 w-40 rounded-md" />
+            <Skeleton className="h-4 my-1 w-6 rounded-full" />
           </div>
         ))}
       </div>
