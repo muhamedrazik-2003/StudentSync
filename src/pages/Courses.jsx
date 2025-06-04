@@ -28,10 +28,10 @@ const Courses = () => {
   }
   return (
     <main className=' m-1 px-2 py-1.5 bg-background rounded-2xl border-2 border-border h-[calc(100vh-32px)]'>
-      <section className='px-6 mt-8'>
+      <section className='px-6 mt-5'>
         <UserGreeting />
       </section>
-      <div className='flex justify-end items-center mt-6 px-7 pb-1'>
+      <div className='flex justify-end items-center mt-6 px-7 pb-2'>
         <h2 className="text-xl mr-auto font-semibold text-slate-900  flex items-center gap-2 ">
           <BookCopy className="w-5 h-5 text-primary" />
           All Courses

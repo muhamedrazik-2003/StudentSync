@@ -29,7 +29,7 @@ export function GradeCards({ setPageReload, cardData }) {
         }
     }
     return (
-        <Card className="w-full justify-center rounded-2xl gap-2 shadow-md bg-white p-3 pb-2">
+        <Card className="w-full justify-center rounded-2xl gap-2 shadow-sm p-3 pb-2">
             <CardHeader className="px-3">
                 <div className="flex items-center justify-between">
                     <div>

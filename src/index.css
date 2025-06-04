@@ -49,7 +49,7 @@
   --foreground: oklch(21.54% 0.036 207.59);
 
   /* Surfaces */
-  --card: oklch(96.5% 0.015 180.29);      /* slightly darker than bg */
+  --card: oklch(99.5% 0.015 180.29);      /* slightly darker than bg */
   --card-foreground: var(--foreground);
   --popover: oklch(97.5% 0.015 180.29);
   --popover-foreground: var(--foreground);

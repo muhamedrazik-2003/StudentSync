@@ -70,7 +70,7 @@ export default function StudentGradeAverageChart({ studentData = [] }) {
     const chartConfig = {
         averageGrade: {
             label: "Average Grade",
-            color: "hsl(var(--chart-1))",
+            color: "var(--primary)",
         },
     };
 

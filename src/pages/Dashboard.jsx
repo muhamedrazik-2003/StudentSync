@@ -24,7 +24,7 @@ const Dashboard = () => {
     }
   return (
     <main className=' m-1 px-2 py-1.5 bg-background rounded-2xl border-2 border-border'>
-      <section className='px-6 mt-8'>
+      <section className='px-6 mt-5'>
         <UserGreeting />
       </section>
       <section className='mt-6'>
