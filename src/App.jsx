@@ -20,7 +20,7 @@ const App = () => {
         backgroundPosition: 'center',
         height: '100vh',
       }}
-      className='min-h-screen h-[100vh] grid place-content-center'
+      className='bg-teal-500 min-h-screen h-[100vh] grid place-content-center'
     >
       <Routes>
         <Route path='/' element={<Login />} />
