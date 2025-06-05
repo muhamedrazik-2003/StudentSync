@@ -4,6 +4,9 @@ import axios from "axios";
 export const getAllusers = async() => {
     return await axios.get(`${baseUrl}/users`)
 };
+export const updateUserData = async(userId,updatedPassword) => {
+    return await axios.put(`${baseUrl}/users/${userId}`,updatedPassword)
+};
 
 export const getAllStudents = async() => {
     return await axios.get(`${baseUrl}/students`)
