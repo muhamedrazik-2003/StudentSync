@@ -56,7 +56,7 @@ export function GradeCards({ setPageReload, cardData }) {
                         {isEditing
                             ? <Input
                                 id=""
-                                name="email"
+                                name="grade"
                                 onChange={(e) => {
                                     const updatedSubjects = [...updatedGrade.subjects];
                                     updatedSubjects[index] = { ...updatedSubjects[index], grade: e.target.value, };

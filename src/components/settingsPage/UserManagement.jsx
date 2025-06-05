@@ -11,108 +11,10 @@ import { Badge } from '@/components/ui/badge';
 import { UsersRound } from 'lucide-react';
 import { ScrollArea } from '../ui/scroll-area';
 
-const UserManagement = () => {
-    const rowData = [{
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    {
-        id: "01",
-        name: "David John",
-        email: "davidjohn@admin",
-        role: "Admin",
-    },
-    ]
-
+const UserManagement = ({userData}) => {
     return (
         <>
-            <div className='mx-2 space-y-3 mt-6'>
+            <div className='mx-2 space-y-2 mt-6'>
                 <h2 className="text-lg font-semibold text-slate-900  flex items-center gap-2 ">
                     <UsersRound className="size-5 text-primary" />
                     User Management
@@ -132,16 +34,16 @@ const UserManagement = () => {
                             </TableHeader>
 
                             <TableBody>
-                                {rowData.map((data) => (
+                                {userData.map((data) => (
                                     <TableRow key={data.id}>
                                         <TableCell onClick={() => { handleRowClick(data) }} className="font-medium" key={data.id}>{data.id}</TableCell>
                                         <TableCell onClick={() => { handleRowClick(data) }} key={data.name}>{data.name}</TableCell>
                                         <TableCell onClick={() => { handleRowClick(data) }} key={data.email}>{data.email}</TableCell>
                                         <TableCell onClick={() => { handleRowClick(data) }} key={data.role}>
-                                            {data.role === 'Admin' ? (
+                                            {data.role === 'admin' ? (
                                                 <Badge variant={"success"}>Admin</Badge>
                                             ) : (
-                                                <Badge>Moderator</Badge>
+                                                <Badge variant={"warning"}>Moderator</Badge>
                                             )}
                                         </TableCell>
                                         <TableCell className="text">

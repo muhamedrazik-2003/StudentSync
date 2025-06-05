@@ -13,6 +13,8 @@ const badgeVariants = cva(
           "border-transparent bg-primary text-primary-foreground [a&]:hover:bg-primary/90 rounded-full px-3",
         success:
           "border-transparent bg-teal-300 text-black rounded-full px-3 w-[65px]",
+        warning:
+          "border-transparent bg-yellow-300 text-black rounded-full px-3 w-[65px]",
         failed:
           "border-transparent bg-red-500 text-background focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40 dark:bg-destructive/60 rounded-full px-3 w-[65px]",
         outline:

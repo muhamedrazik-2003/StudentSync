@@ -1,4 +1,4 @@
-import React, { useState, useEffect, use } from 'react'
+import React, { useState, useEffect} from 'react'
 import UserGreeting from '@/components/common/UserGreeting';
 import { getAllStudents } from '@/services/AllApi';
 import StudentTable from '@/components/studentPage/StudentTable';
@@ -8,21 +8,21 @@ import AddStudent from '@/components/studentPage/AddStudent';
 import TableSkeleton from '@/components/common/TableSkelton';
 
 const StudentListPage = () => {
-  const [userData, setUserData] = useState([]);
+  const [studentData, setStudentData] = useState([]);
   const headerData = ['Student ID', 'Name', 'Email', 'Course', 'Status',""];
   const [pageReload, setPageReload] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   useEffect(() => {
-    fetchUserData()
+    fetchStudentData()
   }, [pageReload]);
 
-  const fetchUserData = async () => {
+  const fetchStudentData = async () => {
     try {
       const response = await getAllStudents();
-      setUserData(response.data);
+      setStudentData(response.data);
       setIsLoading(false)
     } catch (error) {
-      console.log("Error Fetchimg User Data", error.message);
+      console.log("Error Fetching Student Data", error.message);
     }
   }
 
@@ -45,7 +45,7 @@ const StudentListPage = () => {
           </div>)
           : (
             <div className=' px-6'>
-              <StudentTable setPageReload={setPageReload} HeadData={headerData} rowData={userData} />
+              <StudentTable setPageReload={setPageReload} HeadData={headerData} rowData={studentData} />
             </div>
           )}
       </ScrollArea>

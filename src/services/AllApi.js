@@ -1,6 +1,10 @@
 import { baseUrl } from "./baseUrl";
 import axios from "axios";
 
+export const getAllusers = async() => {
+    return await axios.get(`${baseUrl}/users`)
+};
+
 export const getAllStudents = async() => {
     return await axios.get(`${baseUrl}/students`)
 };
