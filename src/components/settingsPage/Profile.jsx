@@ -4,13 +4,13 @@ import { UserRoundCog } from 'lucide-react'
 
 const Profile = () => {
     return (
-        <div className='mx-2 space-y-4 mt-4'>
+        <div className='mx-2 mt-3 space-y-4'>
             <h2 className="text-lg font-semibold text-slate-900  flex items-center gap-2 ">
                 <UserRoundCog className="size-5 text-primary" />
                 User Profile
             </h2>
-            <div className='flex gap-8'>
-                <Avatar className={'size-22 mt-2'}>
+            <div className='flex gap-15'>
+                <Avatar className={'size-22 mt-4'}>
                     <AvatarImage src="https://github.com/shadcn.png" />
                     <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
