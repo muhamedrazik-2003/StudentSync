@@ -1,5 +1,5 @@
 import React , {useState, useEffect} from 'react'
-import UserGreeting from '@/components/Dashboard/UserGreeting'
+import UserGreeting from '@/components/common/UserGreeting'
 import { SectionCards } from '@/components/Dashboard/SectionCards'
 // import GradeChart from '@/components/ui/GradeChart'
 import StudentsPerCourseChart from '@/components/Charts/StudentsPerCourseChart'

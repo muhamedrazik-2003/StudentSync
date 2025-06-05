@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import UserGreeting from '@/components/Dashboard/UserGreeting';
+import UserGreeting from '@/components/common/UserGreeting';
 import { getAllCourses } from '@/services/AllApi';
 import CourseTable from '@/components/coursesPage/CourseTable';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -32,8 +32,8 @@ const Courses = () => {
         <UserGreeting />
       </section>
       <div className='flex justify-end items-center mt-6 px-7 pb-2'>
-        <h2 className="text-xl mr-auto font-semibold text-slate-900  flex items-center gap-2 ">
-          <BookCopy className="w-5 h-5 text-primary" />
+        <h2 className="text-[20px]  mr-auto font-semibold text-slate-900  flex items-center gap-2 ">
+          <BookCopy className="size-5.5 text-primary" />
           All Courses
         </h2>
         <AddCourse setPageReload={setPageReload} />

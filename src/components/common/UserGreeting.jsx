@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 const UserGreeting = () => {
-  const [name, setName] = useState("User")
+  const [name, setName] = useState("Razik")
   return (
     <div>
       <h1 className='text-2xl md:text-4xl'>Welcome <span className='text-primary'>{name}</span></h1>
