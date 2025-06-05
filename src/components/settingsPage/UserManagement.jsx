@@ -35,7 +35,7 @@ const UserManagement = ({userData}) => {
 
                             <TableBody>
                                 {userData.map((data) => (
-                                    <TableRow key={data.id}>
+                                    <TableRow>
                                         <TableCell onClick={() => { handleRowClick(data) }} className="font-medium" key={data.id}>{data.id}</TableCell>
                                         <TableCell onClick={() => { handleRowClick(data) }} key={data.name}>{data.name}</TableCell>
                                         <TableCell onClick={() => { handleRowClick(data) }} key={data.email}>{data.email}</TableCell>

@@ -1,8 +1,6 @@
 import { KeyRound, Pen, X, Check } from 'lucide-react'
 import React, { useState } from 'react'
-import { Button } from '../ui/button'
 import { Input } from '../ui/input'
-import { Skeleton } from '../ui/skeleton'
 import { updateUserData } from '@/services/AllApi'
 
 const Security = ({ setPageReload, userData }) => {
