@@ -1,8 +1,11 @@
 import React from 'react'
-import { Settings } from 'lucide-react'
-import { ScrollArea } from '@/components/ui/scroll-area'
+import {Settings } from 'lucide-react'
+import {ScrollArea } from '@/components/ui/scroll-area'
 import UserGreeting from '@/components/common/UserGreeting'
 import Profile from '@/components/settingsPage/Profile'
+import Security from '@/components/settingsPage/Security'
+import Preference from '@/components/settingsPage/Preference'
+import UserManagement from '@/components/settingsPage/UserManagement'
 
 
 const SettingsPage = () => {
@@ -20,6 +23,9 @@ const SettingsPage = () => {
       <ScrollArea className={'h-[75%]'}>
         <section className="gap-3 px-6">
           <Profile/>
+          <Security/>
+          <Preference/>
+          <UserManagement/>
         </section>
       </ScrollArea>
     </main>
