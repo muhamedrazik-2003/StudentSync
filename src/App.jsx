@@ -8,7 +8,6 @@ import SettingsPage from './pages/SettingsPage'
 import { Routes, Route,useLocation } from 'react-router-dom'
 import Login from './pages/Login'
 
-
 const App = () => {
   const location = useLocation();
   const isLoginPage = location.pathname === '/';
@@ -20,7 +19,7 @@ const App = () => {
       </Routes>
     </main>
   ) : (
-    <main className='grid grid-cols-[50px_1fr] md:grid-cols-[220px_1fr] bg-sidebar text-sidebar-foreground  p-1 md:p-3 h-[100vh]'>
+    <main className='grid grid-cols-[50px_1fr] md:grid-cols-[220px_1fr] bg-sidebar text-sidebar-foreground  p-1 md:p-3'>
       <Sidebar/>
       <Routes>
         <Route path='/dashboard' element={<Dashboard/>}/>

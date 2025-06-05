@@ -13,7 +13,7 @@ const Profile = ({ userData, setPageReload }) => {
     role: userData?.[0]?.role || ''
   })
 
-  const handleDataUpdate = async (userId) => {
+  const handleDataUpdate = async (userId,updatedData) => {
     try {
       await updateUserData(userId, updatedData) // ✅ correct PUT call
       setPageReload?.(prev => !prev)
@@ -33,7 +33,7 @@ const Profile = ({ userData, setPageReload }) => {
         {isEditing ? (
           <div className='flex gap-3'>
             <X className='text-red-500 cursor-pointer' onClick={() => setIsEditing(false)} />
-            <Check className='text-primary cursor-pointer' onClick={() => handleDataUpdate(userData[0]?.id)} />
+            <Check className='text-primary cursor-pointer' onClick={() => handleDataUpdate(userData[0]?.id,updatedData)} />
           </div>
         ) : (
           <Pen className='size-4 text-primary cursor-pointer' onClick={() => setIsEditing(true)} />
@@ -52,8 +52,8 @@ const Profile = ({ userData, setPageReload }) => {
             <p className='text-sm text-primary'>Name</p>
             {isEditing ? (
               <Input
-                value={updatedData.name}
-                onChange={(e) => setupdatedData(prev => ({ ...prev, name: e.target.value }))}
+                defaultValue={userData[0]?.name}
+                onChange={(e) => setupdatedData(prev => ({ ...prev, name: e.target.value}))}
                 className="font-medium p-0 pl-2 my-1 text-md h-6 w-50"
               />
             ) : (
@@ -66,7 +66,7 @@ const Profile = ({ userData, setPageReload }) => {
             <p className='text-sm text-primary'>Email</p>
             {isEditing ? (
               <Input
-                value={updatedData.email}
+                defaultValue={userData[0]?.email}
                 onChange={(e) => setupdatedData(prev => ({ ...prev, email: e.target.value }))}
                 className="font-medium p-0 pl-2 my-1 text-md h-6 w-50"
               />
@@ -80,7 +80,7 @@ const Profile = ({ userData, setPageReload }) => {
             <p className='text-sm text-primary mb-1'>Role</p>
             {isEditing ? (
               <Input
-                value={updatedData.role}
+                defaultValue={userData[0]?.role}
                 onChange={(e) => setupdatedData(prev => ({ ...prev, role: e.target.value }))}
                 className="font-medium p-0 pl-2 my-1 text-md h-6 w-30"
               />

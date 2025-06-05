@@ -18,7 +18,6 @@ const Grades = () => {
     try {
       const response = await getAllGrades();
       setGradeData(response.data);
-      console.log(response.data)
       setIsLoading(false)
     } catch (error) {
       console.log("Error Fetching Grades Data", error.message);
@@ -37,11 +36,10 @@ const Grades = () => {
       </div>
       <ScrollArea className={'h-[75%]'}>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 2xl:grid-cols-4 gap-4 px-6">
-          {
-            gradeData.map(cardData => (
-              isLoading
-                ? <CardSkeleton />
-                : <GradeCards setPageReload={setPageReload} cardData={cardData} />
+          {isLoading
+            ? Array.from({ length: 6 }).map((_, index) => <CardSkeleton key={index} />)
+            : gradeData.map(cardData => (
+              <GradeCards setPageReload={setPageReload} cardData={cardData} />
             ))
           }
         </div>

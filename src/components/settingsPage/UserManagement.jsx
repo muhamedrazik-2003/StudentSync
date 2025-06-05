@@ -14,12 +14,12 @@ import { ScrollArea } from '../ui/scroll-area';
 const UserManagement = ({userData}) => {
     return (
         <>
-            <div className='mx-2 space-y-2 mt-6'>
+            <div className='mx-2 space-y-1 mt-6'>
                 <h2 className="text-lg font-semibold text-slate-900  flex items-center gap-2 ">
                     <UsersRound className="size-5 text-primary" />
                     User Management
                 </h2>
-                <div className='border-2 rounded-xl h-[135px]'>
+                <div className='border-2 rounded-xl h-[130px]'>
                     <ScrollArea className="h-[130px] overflow-auto">
 
                         <Table>
@@ -35,7 +35,7 @@ const UserManagement = ({userData}) => {
 
                             <TableBody>
                                 {userData.map((data) => (
-                                    <TableRow>
+                                    <TableRow key={data.id}>
                                         <TableCell onClick={() => { handleRowClick(data) }} className="font-medium" key={data.id}>{data.id}</TableCell>
                                         <TableCell onClick={() => { handleRowClick(data) }} key={data.name}>{data.name}</TableCell>
                                         <TableCell onClick={() => { handleRowClick(data) }} key={data.email}>{data.email}</TableCell>

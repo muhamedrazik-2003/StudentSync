@@ -35,7 +35,7 @@ const Security = ({ setPageReload, userData }) => {
                                 onChange={(e) => {
                                     setUpdatedPassword((prev) => ({ ...prev, password: e.target.value }))
                                 }}
-                                value={userData[0].password}
+                                defaultValue={userData[0].password}
                                 className="font-medium  p-0 my-1 text-sm  text-center h-6 w-30" />
                             : <p className='text-md font-medium'>************</p>
 

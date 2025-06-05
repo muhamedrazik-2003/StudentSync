@@ -19,7 +19,7 @@ const Sidebar = () => {
       </div>
       <div>
         <div className="space-y-1">
-        <RouteAdd to="/logout" Icon={LogOut} title="Logout" />
+        <RouteAdd to="/" Icon={LogOut} title="Logout" />
       </div>
         <div className='flex pb-4 items-center mx-2  gap-2'>
           <Avatar>
