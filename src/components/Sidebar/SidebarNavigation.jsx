@@ -6,7 +6,7 @@ function SidebarNavigation() {
   return (
     <div className='flex flex-col justify-between min-h-[76vh] md:min-h-[62vh] md:px-5'>
       <div className="space-y-1 mt-15">
-        <RouteAdd to="/" Icon={Home} title="Dashboard" />
+        <RouteAdd to="/dashboard" Icon={Home} title="Dashboard" />
         <RouteAdd to="/students" Icon={UserRound} title="Students" />
         <RouteAdd to="/courses" Icon={Book} title="Courses" />
         <RouteAdd to="/grades" Icon={GraduationCap} title="Grades" />
