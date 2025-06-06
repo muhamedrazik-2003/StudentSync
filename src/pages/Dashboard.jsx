@@ -19,7 +19,6 @@ const Dashboard = () => {
     try {
       const response = await getAllGrades();
       setGradeData(response.data);
-      console.log(response.data)
       setIsLoading(false)
     } catch (error) {
       console.log("Error Fetching Grades Data", error.message);

@@ -22,6 +22,7 @@ const AddCourse = ({ setPageReload }) => {
         try {
             const response = await AddNewCourse(AddedData)
             setPageReload(prev => !prev)
+            alert("Course Data added successfully")
         } catch (error) {
             alert("Error Adding Course Data", error.message);
             console.log("Error Adding Course Data", error.message);

@@ -32,6 +32,7 @@ const CourseActionMenu = ({ setPageReload, courseData }) => {
         try {
             const response = await updateCurrentCourse(courseId, updatedData)
             setPageReload(prev => !prev)
+            alert("Course Data updated successfully")
         } catch (error) {
             alert("Error updating Course Data", error.message);
             console.log("Error updating Course Data", error.message);
@@ -41,6 +42,7 @@ const CourseActionMenu = ({ setPageReload, courseData }) => {
         try {
             const Response = await deleteCourse(courseId)
             setPageReload(prev => !prev)
+            alert("Course Data deleted successfully")
         } catch (error) {
             alert("Error Deleting course Data", error.message);
             console.log("Error Deleting course Data", error.message);

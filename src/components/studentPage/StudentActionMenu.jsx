@@ -35,8 +35,9 @@ const StudentActionMenu = ({ setPageReload, studentData }) => {
                 ...updatedData,
                 updatedAt: new Date().toISOString()
             }
-            const response = await updateCurrentStudent(studentId, data)
+            const response = await updateCurrentStudent(studentId, dataToUpdate)
             setPageReload(prev => !prev)
+            alert("User data updated successfully")
         } catch (error) {
             alert("Error updating User Data", error.message);
             console.log("Error updating User Data", error.message);
@@ -46,6 +47,7 @@ const StudentActionMenu = ({ setPageReload, studentData }) => {
         try {
             const Response = await deleteStudent(studentId)
             setPageReload(prev => !prev)
+            alert("User Data deleted successfully")
         } catch (error) {
             alert("Error Deleting User Data", error.message);
             console.log("Error Deleting User Data", error.message);

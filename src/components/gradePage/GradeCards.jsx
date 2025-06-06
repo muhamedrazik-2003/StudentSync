@@ -10,7 +10,6 @@ import {
     CardTitle,
 } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
 import { Pen, PenOff } from "lucide-react"
 import { updateCurrentGrade } from "@/services/AllApi"
 
@@ -22,6 +21,7 @@ export function GradeCards({ setPageReload, cardData }) {
         try {
             console.log(updatedData)
             const response = await updateCurrentGrade(studentID, updatedData)
+            alert("Student Grade Updated Successfully")
             setPageReload(prev => !prev)
         } catch (error) {
             alert("Error Updating Student Grade", error.message);
