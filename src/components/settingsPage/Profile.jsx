@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { use, useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar'
 import { UserRoundCog, Pen, Check, X } from 'lucide-react'
 import { Input } from '../ui/input'
@@ -7,17 +7,14 @@ import { updateUserData } from '@/services/AllApi' // ✅ make sure this is corr
 const Profile = ({ userData, setPageReload }) => {
   const [isEditing, setIsEditing] = useState(false)
 
-  const [updatedData, setupdatedData] = useState({
-    name: userData?.[0]?.name || '',
-    email: userData?.[0]?.email || '',
-    role: userData?.[0]?.role || ''
-  })
+  const [updatedData, setupdatedData] = useState({...userData})
 
   const handleDataUpdate = async (userId,updatedData) => {
     try {
       await updateUserData(userId, updatedData) // ✅ correct PUT call
       setPageReload?.(prev => !prev)
       setIsEditing(false)
+      alert("Name and Email updated successfully")
     } catch (error) {
       console.error('Updating name and email failed:', error)
     }
@@ -53,7 +50,7 @@ const Profile = ({ userData, setPageReload }) => {
             {isEditing ? (
               <Input
                 defaultValue={userData[0]?.name}
-                onChange={(e) => setupdatedData(prev => ({ ...prev, name: e.target.value}))}
+                onChange={(e) => setupdatedData({...updatedData, name: e.target.value })}
                 className="font-medium p-0 pl-2 my-1 text-md h-6 w-50"
               />
             ) : (
@@ -67,7 +64,7 @@ const Profile = ({ userData, setPageReload }) => {
             {isEditing ? (
               <Input
                 defaultValue={userData[0]?.email}
-                onChange={(e) => setupdatedData(prev => ({ ...prev, email: e.target.value }))}
+                onChange={(e) => setupdatedData({...updatedData, email: e.target.value })}
                 className="font-medium p-0 pl-2 my-1 text-md h-6 w-50"
               />
             ) : (
@@ -81,7 +78,7 @@ const Profile = ({ userData, setPageReload }) => {
             {isEditing ? (
               <Input
                 defaultValue={userData[0]?.role}
-                onChange={(e) => setupdatedData(prev => ({ ...prev, role: e.target.value }))}
+                onChange={(e) => setupdatedData({...updatedData, role: e.target.value })}
                 className="font-medium p-0 pl-2 my-1 text-md h-6 w-30"
               />
             ) : (

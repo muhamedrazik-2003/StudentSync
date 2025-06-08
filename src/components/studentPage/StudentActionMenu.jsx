@@ -35,7 +35,7 @@ const StudentActionMenu = ({ setPageReload, studentData }) => {
                 ...updatedData,
                 updatedAt: new Date().toISOString()
             }
-            const response = await updateCurrentStudent(studentId, dataToUpdate)
+            await updateCurrentStudent(studentId, dataToUpdate)
             setPageReload(prev => !prev)
             alert("User data updated successfully")
         } catch (error) {
@@ -45,7 +45,7 @@ const StudentActionMenu = ({ setPageReload, studentData }) => {
     }
     const handleDataDelete = async (studentId) => {
         try {
-            const Response = await deleteStudent(studentId)
+            await deleteStudent(studentId)
             setPageReload(prev => !prev)
             alert("User Data deleted successfully")
         } catch (error) {
@@ -91,7 +91,7 @@ const StudentActionMenu = ({ setPageReload, studentData }) => {
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5 pr-3">
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Name</Label>
-                                <Input id="" name="name" onChange={(e) => setUpdatedData({ ...updatedData, name: e.target.value })} defaultValue={studentData.name} />
+                                <Input id="" name="name" onChange={(e) => setUpdatedData({ ...updatedData, name: e.target.value })}     defaultValue={studentData.name} />
                             </div>
                             <div className="mx-1 space-y-2">
                                 <Label htmlFor="">Email</Label>

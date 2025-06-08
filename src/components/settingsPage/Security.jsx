@@ -5,15 +5,15 @@ import { updateUserData } from '@/services/AllApi'
 
 const Security = ({ setPageReload, userData }) => {
     const [isEditing, setIsEditing] = useState(false)
-    const [updatedPassword, setUpdatedPassword] = useState({
-        password: userData?.[0]?.password || '',
-    })
+    const [updatedPassword, setUpdatedPassword] = useState({...userData})
 
     const handlePasswordUpdate = async (userId, updatedPassword) => {
         try {
-            const response = await updateUserData(userId, updatedPassword)
+            await updateUserData(userId, updatedPassword)
+            console.log(updatedPassword)
             setPageReload(prev => !prev)
             setIsEditing(false)
+            alert("Password updated successfully")
         } catch (error) {
             console.error('updating Password Failed')
         }
@@ -33,11 +33,16 @@ const Security = ({ setPageReload, userData }) => {
                                 id=""
                                 name="grade"
                                 onChange={(e) => {
-                                    setUpdatedPassword((prev) => ({ ...prev, password: e.target.value }))
+                                    setUpdatedPassword({ ...updatedPassword, password: e.target.value })
                                 }}
-                                defaultValue={userData[0].password}
+                                defaultValue={userData[0]?.password}
                                 className="font-medium  p-0 my-1 text-sm  text-center h-6 w-30" />
-                            : <p className='text-md font-medium'>************</p>
+                            : <p className='text-md font-medium'>{
+                                userData[0]?.password?.split('').map((char,index) => {
+                                    if(index > 2) return  '*';
+                                    return char;
+                                }).join('')
+                            }</p>
 
 
                         }
