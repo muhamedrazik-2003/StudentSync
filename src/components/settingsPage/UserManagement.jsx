@@ -10,8 +10,9 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { UsersRound } from 'lucide-react';
 import { ScrollArea } from '../ui/scroll-area';
+import { Skeleton } from '../ui/skeleton';
 
-const UserManagement = ({userData}) => {
+const UserManagement = ({ isLoading, userData }) => {
     return (
         <>
             <div className='mx-2 space-y-1 mt-6'>
@@ -34,6 +35,29 @@ const UserManagement = ({userData}) => {
                             </TableHeader>
 
                             <TableBody>
+                                {isLoading
+                                    ? (
+                                        <>
+                                            <TableRow>
+                                                <TableCell colSpan={5} className="text-center">
+                                                    <Skeleton className="h-4 my-1 w-[100%] mx-auto" />
+                                                </TableCell>
+                                            </TableRow>
+                                            <TableRow>
+                                                <TableCell colSpan={5} className="text-center">
+                                                    <Skeleton className="h-4 my-1 w-[100%] mx-auto" />
+                                                </TableCell>
+                                            </TableRow>
+                                        </>
+                                    )
+                                    : userData.length === 0 && (
+                                        <TableRow>
+                                            <TableCell colSpan={5} className="text-center">
+                                                No Users Found
+                                            </TableCell>
+                                        </TableRow>
+                                    )
+                                }
                                 {userData.map((data) => (
                                     <TableRow key={data.id}>
                                         <TableCell onClick={() => { handleRowClick(data) }} className="font-medium" key={data.id}>{data.id}</TableCell>

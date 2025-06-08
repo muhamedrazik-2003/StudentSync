@@ -2,7 +2,7 @@ import React from 'react'
 import { Skeleton } from '@/components/ui/skeleton';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const ChartSkelton = () => {
+const ChartSkelton = ({ barChart }) => {
     return (
         <Card className="w-full h-[370px]">
             <CardHeader>
@@ -12,7 +12,22 @@ const ChartSkelton = () => {
             </CardHeader>
             <CardContent>
                 <div className="space-y-4 mt-6">
-                    <Skeleton className="h-[240px] w-full rounded-md" />
+                    {barChart
+                        ? <>
+                            <Skeleton className="h-[25px] w-90 rounded-md" />
+                            <Skeleton className="h-[25px] w-55 rounded-md" />
+                            <Skeleton className="h-[25px] w-68 rounded-md" />
+                            <Skeleton className="h-[25px] w-30 rounded-md" />
+                            <Skeleton className="h-[25px] w-84 rounded-md" />
+                            <Skeleton className="h-[15px] w-40 mt-10 rounded-md" />
+
+                        </>
+                        :
+                        <>
+                            <Skeleton className="h-[200px] w-52 mx-auto rounded-full" />
+                            <Skeleton className="h-[15px] w-40 mt-5 rounded-md" />
+                        </>
+                    }
                 </div>
             </CardContent>
         </Card>

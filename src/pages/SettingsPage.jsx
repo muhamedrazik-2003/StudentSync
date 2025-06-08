@@ -11,6 +11,7 @@ import { ScrollArea } from '@/components/ui/scroll-area'
 const SettingsPage = () => {
   const [userData, setUserData] = useState([]);
   const [pageReload, setPageReload] = useState(false)
+  const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     fetchUserData()
   }, [pageReload]);
@@ -19,7 +20,7 @@ const SettingsPage = () => {
     try {
       const response = await getAllusers();
       setUserData(response.data);
-      // setIsLoading(false)
+      setIsLoading(false)
     } catch (error) {
       console.log("Error Fetching User Data", error.message);
     }
@@ -36,10 +37,10 @@ const SettingsPage = () => {
           </div>
         </section>
         <div className="px-8">
-          <Profile setPageReload={setPageReload} userData={userData} />
-          <Security setPageReload={setPageReload} userData={userData} />
+          <Profile isLoading={isLoading} setPageReload={setPageReload} userData={userData} />
+          <Security isLoading={isLoading} setPageReload={setPageReload} userData={userData} />
           <Preference />
-          <UserManagement setPageReload={setPageReload} userData={userData} />
+          <UserManagement isLoading={isLoading} setPageReload={setPageReload} userData={userData} />
         </div>
       </ScrollArea>
     </main>

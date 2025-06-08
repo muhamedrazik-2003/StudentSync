@@ -19,7 +19,7 @@ const Dashboard = () => {
     try {
       const response = await getAllGrades();
       setGradeData(response.data);
-      setIsLoading(false)
+      // setIsLoading(false)
     } catch (error) {
       console.log("Error Fetching Grades Data", error.message);
     }
@@ -36,12 +36,12 @@ const Dashboard = () => {
       <section className='mt-5 px-6 grid grid-cols-1 md:grid-cols-2 gap-5'>
         {
           isLoading 
-          ? (<ChartSkelton />)
+          ? (<ChartSkelton barChart={true} />)
             : (<StudentsPerCourseChart students={gradeData} /> )
         }
         {
           isLoading
-            ? (<ChartSkelton />)
+            ? (<ChartSkelton barChart={false} />)
             : (<StudentGradeAverageChart studentData={gradeData} />)
 
         }

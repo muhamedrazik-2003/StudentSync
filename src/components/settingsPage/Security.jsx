@@ -2,10 +2,11 @@ import { KeyRound, Pen, X, Check } from 'lucide-react'
 import React, { useState } from 'react'
 import { Input } from '../ui/input'
 import { updateUserData } from '@/services/AllApi'
+import { Skeleton } from '../ui/skeleton'
 
-const Security = ({ setPageReload, userData }) => {
+const Security = ({ isLoading, setPageReload, userData }) => {
     const [isEditing, setIsEditing] = useState(false)
-    const [updatedPassword, setUpdatedPassword] = useState({...userData})
+    const [updatedPassword, setUpdatedPassword] = useState({ ...userData })
 
     const handlePasswordUpdate = async (userId, updatedPassword) => {
         try {
@@ -37,12 +38,20 @@ const Security = ({ setPageReload, userData }) => {
                                 }}
                                 defaultValue={userData[0]?.password}
                                 className="font-medium  p-0 my-1 text-sm  text-center h-6 w-30" />
-                            : <p className='text-md font-medium'>{
-                                userData[0]?.password?.split('').map((char,index) => {
-                                    if(index > 2) return  '*';
-                                    return char;
-                                }).join('')
-                            }</p>
+                            : <>
+                                {
+                                    isLoading
+                                        ? (<Skeleton className="h-5 w-35 my-1 rounded-3xl" />)
+                                        : (
+                                            <p className='text-md font-medium'>{
+                                                userData[0]?.password?.split('').map((char, index) => {
+                                                    if (index > 2) return '*';
+                                                    return char;
+                                                }).join('')
+                                            }</p>
+                                        )
+                                }
+                            </>
 
 
                         }
