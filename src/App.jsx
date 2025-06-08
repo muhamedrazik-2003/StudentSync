@@ -7,6 +7,7 @@ import Courses from './pages/Courses'
 import SettingsPage from './pages/SettingsPage'
 import { Routes, Route, useLocation } from 'react-router-dom'
 import Login from './pages/Login'
+import LoginBg from './assets/loginbg.png'
 
 const App = () => {
   const location = useLocation();
@@ -15,7 +16,7 @@ const App = () => {
   return isLoginPage ? (
     <main
       style={{
-        backgroundImage: "url('../public/loginbg.png')",
+        backgroundImage: `url(${LoginBg})`,
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         height: '100vh',
