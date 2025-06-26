@@ -31,9 +31,9 @@ const StudentListPage = () => {
       <section className='px-6 mt-5'>
         <UserGreeting />
       </section>
-      <div className='flex justify-end items-center mt-6 px-7 pb-2'>
-        <h2 className="text-[20px]  mr-auto font-semibold text-slate-900  flex items-center gap-2 ">
-          <Users className="size-5.5 text-primary" />
+      <div className='flex justify-between flex-wrap gap-2 items-center mt-6 px-7 pb-2'>
+        <h2 className="md:text-[20px] text-sm mr-auto font-semibold text-slate-900  flex items-center gap-2 ">
+          <Users className="md:size-5.5 size-5 text-primary" />
           All Students
         </h2>
         <AddStudent setPageReload={setPageReload} />

@@ -5,8 +5,20 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/card"
+import { useState } from "react"
 
-export function SectionCards() {
+export function SectionCards({ studentData }) {
+    let totalCourses = 0
+    let seenCourse = []
+    if (studentData.length > 0) {
+        for (let student of studentData) {
+            if (!seenCourse.includes(student.course)) {
+                seenCourse.push(student.course);
+                totalCourses += 1;
+            }
+        }
+    }
+    
     return (
         <div className=" grid sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-4 grid-cols-1 gap-4 px-2  lg:px-6">
             <Card className="@container/card rounded-2xl">
@@ -16,7 +28,7 @@ export function SectionCards() {
                         <div>
                             <CardDescription>Total Students</CardDescription>
                             <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                                200
+                                {studentData.length}
                             </CardTitle>
                         </div>
                     </div>
@@ -29,7 +41,7 @@ export function SectionCards() {
                         <div>
                             <CardDescription>Total Courses</CardDescription>
                             <CardTitle className="@[250px]/card:text-3xl text-2xl font-semibold tabular-nums">
-                                90
+                                {totalCourses}
                             </CardTitle>
                         </div>
                     </div>

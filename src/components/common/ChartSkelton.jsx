@@ -11,15 +11,15 @@ const ChartSkelton = ({ barChart }) => {
                 </CardTitle>
             </CardHeader>
             <CardContent>
-                <div className="space-y-4 mt-6">
+                <div className="space-y-3 mt-6">
                     {barChart
                         ? <>
-                            <Skeleton className="h-[25px] w-90 rounded-md" />
-                            <Skeleton className="h-[25px] w-55 rounded-md" />
-                            <Skeleton className="h-[25px] w-68 rounded-md" />
-                            <Skeleton className="h-[25px] w-30 rounded-md" />
-                            <Skeleton className="h-[25px] w-84 rounded-md" />
-                            <Skeleton className="h-[15px] w-40 mt-10 rounded-md" />
+                            <Skeleton className="h-[25px] w-[90%] rounded-md" />
+                            <Skeleton className="h-[25px] w-[55%] rounded-md" />
+                            <Skeleton className="h-[25px] w-[68%] rounded-md" />
+                            <Skeleton className="h-[25px] w-[30%] rounded-md" />
+                            <Skeleton className="h-[25px] w-[84%] rounded-md" />
+                            <Skeleton className="h-[15px] w-[40%] mt-10 rounded-md" />
 
                         </>
                         :

@@ -39,9 +39,9 @@ const AddStudent = ({ setPageReload }) => {
         }
     };
     return (
-        <Dialog >
+        <Dialog>
             <DialogTrigger asChild >
-                <Button className={'rounded-full  !px-6 text-white'}><Plus />Add Student</Button>
+                <Button className={'rounded-full  md:!px-6 text-white'}><Plus /><span className='hidden sm:block'>Add Student</span></Button>
             </DialogTrigger>
             <form>
                 <DialogContent className="md:!max-w-3xl  mx-auto pt-6 pb-4 shadow-xl rounded-3xl bg-background ">
