@@ -1,12 +1,42 @@
-# React + Vite
+# 🎓 StudentSync
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**StudentSync** is a simple **student management web application** built as a learning project.  
+It helps manage student information in a structured way and demonstrates full-stack development concepts.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
 
-## Expanding the ESLint configuration
+- ➕ **Add Students** with details like name, age, and class  
+- ✏️ **Edit Student Details**  
+- 🗑️ **Delete Students**  
+- 🗂️ **Organize and view student data** efficiently  
+- 💾 Data is stored using **JSON Server**  
+- ⚡ Built with **React** and **Tailwind CSS** for a responsive and interactive UI  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🧠 Tech Stack
+
+- **Frontend:** React, Tailwind CSS  
+- **Backend:** JSON Server  
+- **State Management:** React Hooks  
+
+---
+
+## 🎯 Purpose
+
+This project was created to **practice full-stack development**, including:  
+- Frontend development with React and Tailwind  
+- CRUD operations with a backend  
+- Managing state in a React application  
+- Building a responsive and user-friendly interface  
+
+[Live](https://student-sync-opal.vercel.app)
+---
+
+## 👨‍💻 Author
+
+**Muhamed Razik**  
+MERN Stack Developer (in progress)  
+[Portfolio](https://portfolio-jade-six-ruq0v6ebxr.vercel.app) • [LinkedIn](https://www.linkedin.com/in/muhamed-razik)
